@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Golden Spoon | Restaurant & Cafe</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #faf7f0;
+    color: #292c20;
+    line-height: 1.6;
+}
+
+header {
+    background: #202b22;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    color: #e6bd78;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #e6bd78;
+}
+
+.hero {
+    min-height: 530px;
+    background:
+        linear-gradient(#101a16a8, #101a1680),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 7%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero small {
+    color: #f0d19a;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: Arial, sans-serif;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 70px);
+    line-height: 1.15;
+    margin: 20px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 25px;
+    background: #d9ad65;
+    color: #202b22;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #f1d59f;
+}
+
+section {
+    padding: 70px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.section-heading small {
+    color: #a7793d;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: Arial, sans-serif;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin-top: 8px;
+}
+
+.section-heading p {
+    color: #777;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* About Section */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+}
+
+.about h2 {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.about p {
+    color: #666;
+    margin-bottom: 18px;
+}
+
+/* Menu */
+.menu {
+    background: #eeeadf;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fffdf8;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.menu-description {
+    flex: 1;
+}
+
+.menu-description h3 {
+    font-size: 19px;
+}
+
+.menu-description p {
+    color: #777;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+}
+
+.price {
+    color: #a7793d;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Chefs */
+.chef-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.chef-card {
+    text-align: center;
+    background: white;
+    padding-bottom: 25px;
+    box-shadow: 0 4px 15px #0000000d;
+}
+
+.chef-card img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+}
+
+.chef-card h3 {
+    margin-top: 15px;
+    font-size: 23px;
+}
+
+.chef-card p {
+    color: #a7793d;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Ambience */
+.ambience {
+    background: #202b22;
+    color: white;
+}
+
+.ambience-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 18px;
+}
+
+.ambience-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Testimonials */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.review {
+    background: white;
+    padding: 28px;
+    border: 1px solid #eee5d5;
+}
+
+.stars {
+    color: #c18c3c;
+    margin-bottom: 12px;
+}
+
+.review p {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.review h3 {
+    font-size: 18px;
+}
+
+/* Reservation */
+.reservation {
+    background:
+        linear-gradient(#202b22e8, #202b22e8),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80")
+        center/cover;
+    color: white;
+}
+
+.reservation form {
+    max-width: 750px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.reservation input,
+.reservation select,
+.reservation textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d9c8a8;
+    background: #fffdf8;
+    color: #333;
+    font: 15px Arial, sans-serif;
+}
+
+.reservation textarea {
+    grid-column: 1 / -1;
+    resize: vertical;
+}
+
+.reservation button {
+    grid-column: 1 / -1;
+    font-size: 15px;
+}
+
+/* Hours and Location */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.info-card {
+    background: white;
+    padding: 30px;
+    border-top: 4px solid #c69b59;
+}
+
+.info-card h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.info-card p {
+    margin: 8px 0;
+    color: #666;
+    font-family: Arial, sans-serif;
+}
+
+footer {
+    background: #172119;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer .logo {
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #d4d5ce;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Responsive Layout */
+@media (max-width: 800px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .about,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chef-grid,
+    .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ambience-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    section {
+        padding: 45px 5%;
+    }
+
+    .section-heading h2,
+    .about h2 {
+        font-size: 30px;
+    }
+
+    .chef-grid,
+    .review-grid,
+    .ambience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .reservation form {
+        grid-template-columns: 1fr;
+    }
+
+    .reservation textarea,
+    .reservation button {
+        grid-column: auto;
+    }
+
+    .menu-item {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .menu-item img {
+        width: 78px;
+        height: 85px;
+    }
+
+    .menu-description h3 {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+    <div class="logo">✦ The Golden Spoon</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#chefs">Our Chefs</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#reservation">Reservations</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <small>Welcome to The Golden Spoon</small>
+        <h1>Where Every Meal Becomes a Memory</h1>
+        <p>
+            Fine flavours, fresh ingredients, and a warm atmosphere
+            for every occasion.
+        </p>
+        <a href="#menu" class="btn">Explore Our Menu</a>
+        <a href="#reservation" class="btn">Reserve a Table</a>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="about">
+        <img
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85"
+            alt="Elegant restaurant dining experience">
+
+        <div>
+            <small>Our Story</small>
+            <h2>A Passion for Great Food</h2>
+            <p>
+                At The Golden Spoon, we believe that food brings
+                people together. Our restaurant combines timeless
+                recipes with fresh ingredients and creative cooking.
+            </p>
+            <p>
+                Whether you are enjoying a family dinner, a romantic
+                evening, or a relaxing coffee, we make every visit special.
+            </p>
+            <a href="#reservation" class="btn">Visit Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Menu -->
+<section class="menu" id="menu">
+    <div class="section-heading">
+        <small>Fresh From Our Kitchen</small>
+        <h2>Our Special Menu</h2>
+        <p>Delicious dishes prepared with love and care.</p>
+    </div>
+
+    <div class="menu-grid">
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80" alt="Margherita pizza">
+            <div class="menu-description">
+                <h3>Margherita Pizza</h3>
+                <p>Tomato, mozzarella and fresh basil</p>
+            </div>
+            <span class="price">₹299</span>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300&q=80" alt="Gourmet burger">
+            <div class="menu-description">
+                <h3>Classic Gourmet Burger</h3>
+                <p>Fresh lettuce, cheese and house sauce</p>
+            </div>
+            <span class="price">₹249</span>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=300&q=80" alt="Biryani">
+            <div class="menu-description">
+                <h3>Signature Biryani</h3>
+                <p>Fragrant rice with aromatic spices</p>
+            </div>
+            <span class="price">₹279</span>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=300&q=80" alt="Grilled meal">
+            <div class="menu-description">
+                <h3>Grilled Garden Platter</h3>
+                <p>Seasonal vegetables and herbs</p>
+            </div>
+            <span class="price">₹229</span>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=300&q=80" alt="Coffee">
+            <div class="menu-description">
+                <h3>Creamy Cappuccino</h3>
+                <p>Fresh espresso with steamed milk</p>
+            </div>
+            <span class="price">₹149</span>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80" alt="Chocolate cake">
+            <div class="menu-description">
+                <h3>Chocolate Truffle Cake</h3>
+                <p>Rich chocolate and smooth cream</p>
+            </div>
+            <span class="price">₹179</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- Chefs -->
+<section id="chefs">
+    <div class="section-heading">
+        <small>Meet Our Team</small>
+        <h2>Our Expert Chefs</h2>
+        <p>The talented people behind our favourite dishes.</p>
+    </div>
+
+    <div class="chef-grid">
+        <div class="chef-card">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Head chef">
+            <h3>Chef Arjun Rao</h3>
+            <p>Head Chef · Indian Cuisine</p>
+        </div>
+
+        <div class="chef-card">
+            <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=500&q=80" alt="Pastry chef">
+            <h3>Chef Meera Sharma</h3>
+            <p>Pastry Chef · Desserts</p>
+        </div>
+
+        <div class="chef-card">
+            <img src="https://images.unsplash.com/photo-1574966739987-65e38c2a6bd5?auto=format&fit=crop&w=500&q=80" alt="Continental chef">
+            <h3>Chef Daniel Thomas</h3>
+            <p>Chef · Continental Cuisine</p>
+        </div>
+    </div>
+</section>
+
+<!-- Restaurant Ambience -->
+<section class="ambience">
+    <div class="section-heading">
+        <small style="color:#e6bd78">The Experience</small>
+        <h2>Our Restaurant Ambience</h2>
+        <p style="color:#ddd">Beautiful spaces, warm lighting, unforgettable moments.</p>
+    </div>
+
+    <div class="ambience-grid">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80" alt="Restaurant interior">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80" alt="Cozy cafe seating">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" alt="Elegant restaurant dining area">
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="reviews">
+    <div class="section-heading">
+        <small>Guest Experiences</small>
+        <h2>What Our Guests Say</h2>
+        <p>Sample testimonials showcasing the customer review section.</p>
+    </div>
+
+    <div class="review-grid">
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"Beautiful ambience and delicious food. A wonderful place for a family dinner!"</p>
+            <h3>Priya K.</h3>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>"The coffee was excellent, and the staff made us feel very welcome."</p>
+            <h3>Rahul M.</h3>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★☆</div>
+            <p>"Loved the desserts and elegant interiors. Definitely worth visiting again."</p>
+            <h3>Sneha R.</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Table Reservation -->
+<section class="reservation" id="reservation">
+    <div class="section-heading">
+        <small style="color:#e6bd78">Your Table Awaits</small>
+        <h2>Reserve a Table</h2>
+        <p style="color:#eee">Plan your next memorable dining experience with us.</p>
+    </div>
+
+    <form action="#" method="get">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+
+        <input type="date" name="date" aria-label="Reservation date" required>
+
+        <select name="time" required>
+            <option value="">Select Time</option>
+            <option>10:00 AM</option>
+            <option>12:00 PM</option>
+            <option>2:00 PM</option>
+            <option>6:00 PM</option>
+            <option>8:00 PM</option>
+        </select>
+
+        <select name="guests" required>
+            <option value="">Number of Guests</option>
+            <option>1 Guest</option>
+            <option>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4 Guests</option>
+            <option>5+ Guests</option>
+        </select>
+
+        <textarea name="message" rows="4"
+            placeholder="Special requests (optional)"></textarea>
+
+        <button type="submit" class="btn">Request Reservation</button>
+    </form>
+</section>
+
+<!-- Opening Hours and Location -->
+<section id="contact">
+    <div class="section-heading">
+        <small>Come Say Hello</small>
+        <h2>Visit Our Restaurant</h2>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>Opening Hours</h3>
+            <p>Monday – Friday: 10:00 AM – 10:00 PM</p>
+            <p>Saturday: 9:00 AM – 11:00 PM</p>
+            <p>Sunday: 9:00 AM – 10:00 PM</p>
+            <p>Reservations are recommended on weekends.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>Location & Contact</h3>
+            <p>📍 MG Road, Vijayawada, Andhra Pradesh</p>
+            <p>📞 +91 98765 43210</p>
+            <p>✉️ hello@goldenspoon.example</p>
+            <p>Comfortable dining, friendly service, and freshly prepared food.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="logo">✦ The Golden Spoon</div>
+    <p>Good food. Beautiful moments. Lasting memories.</p>
+    <p>© 2026 The Golden Spoon | Restaurant & Cafe Website</p>
+    <p>Designed using HTML and CSS only.</p>
+</footer>
+
+</body>
+</html>
